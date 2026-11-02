@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ☀️ Suncatcher Academy
 
-## Getting Started
+A colorful, interactive learning hub about **Google's Project Suncatcher**, the first step toward AI data centers in space. Built for training sessions and knowledge-transfer talks.
 
-First, run the development server:
+> *Blue marble below / Data streams in silent grace / Starlight feeds my core.*
+> Gemma 4, running on a Google TPU in low Earth orbit (late Oct 2026)
+
+## What's inside
+
+| Page | What the audience gets |
+|---|---|
+| `/` | Hero, the poem, the mission in numbers |
+| `/poem` | Animated poem reveal (with a 5·7·5 syllable view), an interactive 7-hop journey (uplink → TPU → Svalbard downlink), mission fact sheet |
+| `/how-it-works` | Orbital data-center stack, the 81-satellite cluster diagram, radiation test results, Earth-to-space component mapping |
+| `/why-space` | Colorful "why go to space" workflow, IEA power outlook, 8 problems on Earth, pros and cons of orbit |
+| `/race` | Google, SpaceX/xAI, Starcloud, Blue Origin, OpenAI, Anthropic, Meta, Microsoft, China, each with a status badge |
+| `/future` | 2026→2040+ roadmap, what has to go right, which LLM workloads move to orbit first, glossary |
+| `/studio` | **Agent Studio**: 3 Claude agents build an infographic and an engagement kit on any topic, live |
+| `/quiz` | 10-question quiz for the big screen |
+| `/trainer` | 60-minute run sheet, talking points, discussion prompts, analogies |
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # optional: add ANTHROPIC_API_KEY for live agents
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Without a key, the Agent Studio switches to an **offline demo** that builds infographics from the knowledge base, so the session never stalls.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## The agentic pipeline
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`src/lib/agents/` uses the Anthropic TypeScript SDK's **Tool Runner** (`client.beta.messages.toolRunner`) with `claude-opus-5-5`:
 
-## Learn More
+1. 🔭 **Mission Researcher**: tools `search_knowledge_base` and `read_topic`. Writes a fact brief grounded in `src/data/knowledge.ts`.
+2. 🎨 **Infographic Designer**: tool `publish_infographic`. Its input is a Zod schema (stats / flow / compare / timeline / callout blocks), so the UI only renders validated specs.
+3. 🎤 **Session Coach**: tool `publish_engagement_kit` (hook, analogy, discussion prompts, quiz).
 
-To learn more about Next.js, take a look at the following resources:
+`/api/agents` streams each agent's progress to the browser as NDJSON. Requests opt into server-side refusal fallbacks (`fallbacks: "default"`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Updating the content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All facts live in **`src/data/knowledge.ts`**. Every page, the quiz and the agents' search tool read from it. Edit it once and the whole app updates. `docs/KNOWLEDGE.md` has the same material as plain notes for slides and handouts.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Facts are current as of **2 Nov 2026**. Company "perspectives" and future timelines are labelled as analysis or projection, not announcements.

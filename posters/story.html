@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>AI Poem From Space · Story</title>
+<link rel="stylesheet" href="poster.css" />
+<style>
+  .poster { width: 1080px; height: 1920px; }
+  .top { position: absolute; left: 72px; right: 72px; top: 110px; display: flex; align-items: center; justify-content: space-between; }
+  .top .logo { width: 240px; }
+  .top .tag { font-size: 22px; }
+  .headline { position: absolute; left: 72px; right: 72px; top: 270px; font-size: 104px; }
+  .sub { position: absolute; left: 72px; right: 140px; top: 640px; font-size: 32px; line-height: 1.4; color: #dbe1ff; }
+  .sun { width: 150px; height: 150px; right: 90px; top: 800px; }
+  .orbit { width: 760px; height: 760px; left: 160px; top: 720px; }
+  .earth { width: 440px; height: 440px; left: 320px; top: 880px; }
+  .sat { left: 170px; top: 880px; font-size: 84px; }
+  .poem { position: absolute; left: 72px; right: 72px; top: 1060px; padding: 44px 48px 36px 64px; background: rgba(7, 6, 23, 0.6); }
+  .poem p.lines { font-size: 58px; }
+  .poem .by { margin-top: 16px; font-size: 24px; }
+  .chips { position: absolute; left: 72px; right: 72px; top: 1430px; gap: 16px; }
+  .chip { flex: 1; padding: 18px 16px; font-size: 36px; text-align: center; }
+  .chip small { font-size: 18px; }
+  .person { position: absolute; left: 72px; right: 72px; bottom: 120px; display: flex; align-items: center; gap: 32px; }
+  .photo { width: 190px; height: 190px; flex-shrink: 0; }
+  .name { font-size: 40px; }
+  .role { font-size: 24px; margin-top: 4px; }
+  .cta { margin-top: 10px; font-size: 26px; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="stars"></div>
+
+  <div class="top">
+    <img class="logo" src="logo-crop.png" alt="Yoto1" />
+    <span class="tag">🚀 AI news from orbit</span>
+  </div>
+
+  <h1 class="headline">An AI just wrote a poem… <span class="grad">from SPACE.</span></h1>
+  <p class="sub">Google's <b>Project Suncatcher</b> ran Gemma 4 on a TPU in orbit, and this haiku came back down to Earth.</p>
+
+  <div class="sun"></div>
+  <div class="orbit"></div>
+  <div class="earth"></div>
+  <div class="sat">🛰️</div>
+
+  <div class="poem">
+    <p class="lines">Blue marble below<br />Data streams in silent grace<br />Starlight feeds my core.</p>
+    <p class="by">— Gemma 4, on a Google TPU in low Earth orbit</p>
+  </div>
+
+  <div class="chips">
+    <div class="chip c1">4<small>TPUs in orbit</small></div>
+    <div class="chip c2">1 kW<small>pure sunlight</small></div>
+    <div class="chip c3">8×<small>more solar</small></div>
+    <div class="chip c4">2027<small>laser links</small></div>
+  </div>
+
+  <div class="person">
+    <img class="photo" src="photo.png" alt="" />
+    <div>
+      <div class="name">Srinivasan Ramanujam</div>
+      <div class="role">Agentic AI Consultant · Yoto1</div>
+      <div class="cta">☀️ The next data center is <span class="grad">above the clouds.</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
